@@ -130,3 +130,13 @@ print(set('Jieer'))
 friuts = {'apple':'red','orange':'orange','cherry':'red'}
 
 print(set(friuts))
+
+a = {1,2}
+b = {2,3}
+
+print(a & b)
+
+c = (1,2)
+d = (2,3)
+
+print(c & d)
