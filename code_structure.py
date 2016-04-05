@@ -78,3 +78,45 @@ word = 'letters'
 letter_counts = {letter: word.count(letter) for letter in set(word)}
 
 print(letter_counts)
+
+
+
+def agree():
+    return True
+
+if agree():
+    print('Splendid!')
+else:
+    print('That was unexpected.')
+
+
+def menu(wine,entree,dessert='pudding'):
+    return {'wine':wine,'entree':entree,'dessert':dessert}
+
+print(menu('chardonnay','chicken'))
+
+def print_args(*args):
+    print('Positional argument tuple:',args)
+
+print_args(3,2,3,'Wait','uh')
+
+def print_kwargs(**kwargs):
+    print('keyword arguments:',kwargs)
+
+print_kwargs(wine='merlog',entree='mutton',dessert='macaroon')
+
+def sum(a,b):
+    return a+b
+
+def run_something_with_args(func,arg1,arg2):
+    return func(arg1,arg2)
+
+print(run_something_with_args(sum,2,5))
+
+
+def outer(a,b):
+    def inner(c,d):
+        return c+d
+    return inner(a,b)
+
+print(outer(4,7))
