@@ -65,3 +65,33 @@ class A:
 
 A.kids()
 A.exclaim()
+
+class Word():
+    def __init__(self,text):
+        self.text = text
+
+    def __eq__(self, other):
+        return self.text.lower() == other.text.lower()
+
+    def __str__(self):
+        return 'Jieer,'+self.text
+
+first = Word('ha')
+second = Word('HA')
+third = Word('eh')
+
+print(first == second)
+print(first == third)
+print(second)
+
+from collections import namedtuple
+
+Duck = namedtuple('Duck','bill,tail')
+
+duck = Duck('wide orange','long')
+
+print(duck)
+
+print(duck.bill)
+
+print(duck.tail)
