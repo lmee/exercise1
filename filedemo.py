@@ -206,3 +206,207 @@ import random
 print(random.randrange(2,19))
 
 print(random.choice('Jieer'))
+
+
+
+# import sqlite3
+#
+# conn = sqlite3.connect('enterprise.db')
+#
+# curs = conn.cursor()
+
+# curs.execute('''CREATE TABLE zoo (critter VARCHAR(20) PRIMARY KEY ,
+# count INT , damages FLOAT)''')
+
+# curs.execute('INSERT INTO zoo VALUES ("duck",5,0.0)')
+#
+# curs.execute('INSERT INTO zoo VALUES ("bear",2,1000.0)')
+#
+# ins = 'INSERT INTO zoo (critter,count,damages) VALUES(?,?,?)'
+#
+# curs.execute(ins,('weasel',1,2000.0))
+
+# curs.execute('SELECT * FROM zoo')
+
+# curs.execute('SELECT * FROM zoo ORDER BY count ')
+
+# curs.execute('SELECT * FROM zoo ORDER BY count DESC ')
+
+# curs.execute('''SELECT * FROM zoo WHERE
+#   damages = (SELECT MAX(damages) FROM zoo)''')
+#
+# rows = curs.fetchall()
+#
+# print(rows)
+#
+# curs.close()
+#
+# conn.close()
+
+import redis
+
+conn = redis.Redis()
+
+print(conn.keys("*"))
+
+conn.set('secret','ni!')
+
+conn.set('carats',24)
+
+conn.set('fever','101.5')
+
+print(conn.get('secret'))
+
+print(conn.get('carats'))
+
+print(conn.get('fever'))
+
+conn.setnx('secret','icky-icky-icky-ptang-zoop-boing!')
+
+print(conn.get('secret'))
+
+conn.getset('secret','icky-icky-icky-ptang-zoop-boing!')
+
+print(conn.get('secret'))
+
+print(conn.getrange('secret',-6,-1))
+
+print(conn.setrange('secret',0,'ICKY'))
+
+print(conn.get('secret'))
+
+conn.mset({'pie':'cherry','cordial':'sherry'})
+
+print(conn.mget(['fever','carats']))
+
+conn.delete('fever')
+
+conn.lpush('zoo','bear')
+
+conn.lpush('zoo','alligator','duck')
+
+conn.linsert('zoo','before','bear','beaver')
+conn.linsert('zoo','after','bear','cassowary')
+
+conn.lset('zoo',2,'marmoset')
+
+conn.lpush('zoo','yak')
+
+print(conn.lindex('zoo',3))
+
+print(conn.lrange('zoo',0,2))
+
+print(conn.ltrim('zoo',1,4))
+
+print(conn.lrange('zoo',0,-1))
+
+conn.hmset('song',{'do':'a deer','re':'about a deer'})
+
+print(conn.hset('song','mi','a note to follow re'))
+
+print(conn.hget('song','mi'))
+
+print(conn.hmget('song','re','do'))
+
+print(conn.hkeys('song'))
+
+print(conn.hvals('song'))
+
+print(conn.hlen('song'))
+
+print(conn.hgetall('song'))
+
+conn.hsetnx('song','fa','a note that rhymes with la')
+
+
+conn.sadd('soo','duck','goat','turkey')
+
+print(conn.scard('soo'))
+
+print(conn.smembers('soo'))
+
+print(conn.srem('soo','turkey'))
+
+conn.sadd('better_zoo','tiger','wolf','duck')
+
+print(conn.sinter('soo','better_zoo'))
+
+conn.sinterstore('fowl_zoo','soo','better_zoo')
+
+print(conn.smembers('fowl_zoo'))
+
+print(conn.sunion('soo','better_zoo'))
+
+conn.sunionstore('fabulous_zoo','soo','better_zoo')
+
+print(conn.smembers('fabulous_zoo'))
+
+print(conn.sdiff('soo','better_zoo'))
+
+conn.sdiffstore('zoo_sale','soo','better_zoo')
+
+print(conn.smembers('zoo_sale'))
+
+import  time
+
+now = time.time()
+print(now)
+
+conn.zadd('logins','smeagol',now)
+
+conn.zadd('logins','sauron',now+(5*60))
+
+conn.zadd('logins','bilbo',now+(2*60*60))
+
+conn.zadd('logins','treebeard',now+(24*60*60))
+
+print(conn.zrank('logins','bilbo'))
+
+print(conn.zscore('logins','bilbo'))
+
+print(conn.zrange('logins',0,-1))
+
+print(conn.zrange('logins',0,-1,withscores=True))
+
+
+days = ['2013-02-25','2013-02-26','2013-02-27']
+
+big_spender = 1089
+
+tire_kicker = 40459
+
+late_joiner = 550212
+
+conn.setbit(days[0],big_spender,1)
+
+conn.setbit(days[0],tire_kicker,1)
+
+
+conn.setbit(days[1],big_spender,1)
+
+conn.setbit(days[2],big_spender,1)
+
+conn.setbit(days[2],late_joiner,1)
+
+for day in days:
+    print(conn.bitcount(day))
+
+
+print(conn.getbit(days[1],tire_kicker))
+
+print(conn.bitop('and','everyday',*days))
+
+import time
+key = 'now you see it'
+
+conn.set(key,'but not for long')
+
+conn.expire(key,5)
+
+conn.ttl(key)
+
+print(conn.get(key))
+
+time.sleep(6)
+
+print(conn.get(key))
