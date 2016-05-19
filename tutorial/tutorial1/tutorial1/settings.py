@@ -14,6 +14,7 @@ BOT_NAME = 'tutorial1'
 SPIDER_MODULES = ['tutorial1.spiders']
 NEWSPIDER_MODULE = 'tutorial1.spiders'
 
+IMAGES_STORE = '/Users/jieer/tmp/images'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial1 (+http://www.yourdomain.com)'
@@ -24,7 +25,7 @@ NEWSPIDER_MODULE = 'tutorial1.spiders'
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY=0.25
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
 #CONCURRENT_REQUESTS_PER_IP=16
@@ -61,9 +62,7 @@ NEWSPIDER_MODULE = 'tutorial1.spiders'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tutorial1.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {'tutorial1.pipelines.Tutorial1Pipeline': 1}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

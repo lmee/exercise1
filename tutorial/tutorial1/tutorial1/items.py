@@ -11,4 +11,5 @@ import scrapy
 class Tutorial1Item(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    img_url = scrapy.Field()
+    images= scrapy.Field()
