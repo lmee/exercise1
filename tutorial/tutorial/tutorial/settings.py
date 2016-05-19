@@ -9,10 +9,10 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tutorial1'
+BOT_NAME = 'tutorial'
 
-SPIDER_MODULES = ['tutorial1.spiders']
-NEWSPIDER_MODULE = 'tutorial1.spiders'
+SPIDER_MODULES = ['tutorial.spiders']
+NEWSPIDER_MODULE = 'tutorial.spiders'
 
 IMAGES_STORE = '/Users/jieer/tmp/images'
 
@@ -62,7 +62,7 @@ DOWNLOAD_DELAY=0.25
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {'tutorial1.pipelines.Tutorial1Pipeline': 1}
+ITEM_PIPELINES = {'tutorial.pipelines.TutorialPipeline': 1}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

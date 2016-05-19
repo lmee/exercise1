@@ -8,9 +8,12 @@
 import requests
 
 from scrapy import log
-from tutorial.tutorial1.tutorial1 import settings
+
+from tutorial import settings
 import os
-class Tutorial1Pipeline(object):
+
+
+class TutorialPipeline(object):
     def process_item(self, item, spider):
         if 'img_url' in item:
             imgs = []
